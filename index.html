@@ -1,663 +1,550 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amijoalian Roa | Portafolio de Desarrollo de Software</title>
-  <meta name="description" content="Portafolio personal de Amijoalian Roa, estudiante de Informática en la Universidad de Oriente (UDO), enfocada en desarrollo de software, sistemas inteligentes y soluciones prácticas." />
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            surface: {
-              950: '#0b0910',
-              900: '#15111f',
-              800: '#1e182d',
-              700: '#2a223f',
-            }
-          }
-        }
-      }
-    };
-  </script>
-
+  <title>Amijoalian Roa | Portafolio</title>
   <style>
+    :root {
+      --bg: #0b0910;
+      --surface: #14101d;
+      --surface-2: #1c1629;
+      --text: #f6f2ff;
+      --muted: #b8aed0;
+      --pink: #ff5ca8;
+      --purple: #9b5cff;
+      --border: rgba(255, 255, 255, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #0b0910;
-      color: #f1f5f9;
-      overflow-x: hidden;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 92, 168, 0.14), transparent 36%),
+        radial-gradient(circle at 88% 14%, rgba(155, 92, 255, 0.16), transparent 38%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    /* Sutil patrón de cuadrícula técnica de fondo */
-    .bg-grid-pattern {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(236, 72, 153, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    /* Resplandor ambiental rosado y morado */
-    .hero-glow {
-      background: radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.14) 0%, rgba(168, 85, 247, 0.08) 38%, transparent 70%);
+    .container {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    /* Animaciones de aparición al hacer scroll */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 9, 16, 0.82);
+      border-bottom: 1px solid var(--border);
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
     }
 
-    /* Tarjetas con borde brillante sutil rosado/morado al pasar el cursor */
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 68px 0 48px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(155, 92, 255, 0.12);
+      border: 1px solid rgba(255, 92, 168, 0.28);
+      color: #f3b8d6;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 700px;
+      font-size: 1.03rem;
+      margin-bottom: 26px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      border: 1px solid var(--border);
+      transition: transform 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 92, 168, 0.45);
+    }
+
+    section {
+      padding: 44px 0;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 24px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      color: #ebe4fa;
+      border: 1px solid rgba(155, 92, 255, 0.22);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 18px;
+    }
+
     .project-card {
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(244, 114, 182, 0.45);
-      box-shadow: 0 12px 30px -10px rgba(168, 85, 247, 0.2);
+      border-color: rgba(255, 92, 168, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .project-type {
+      font-size: 0.78rem;
+      color: #ff99ca;
+      font-weight: 600;
+    }
+
+    .project-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 8px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 14px;
+    }
+
+    .project-links {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #ff99ca;
+    }
+
+    .project-links a:hover {
+      color: #d5b8ff;
+      text-decoration: underline;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, rgba(255, 92, 168, 0.11), rgba(155, 92, 255, 0.13));
+      border: 1px solid rgba(255, 92, 168, 0.25);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 540px;
+      margin-top: 6px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      margin-top: 32px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-pink-500/25 selection:text-pink-200 bg-grid-pattern">
-
-  <!-- Notificación Toast para copiado de enlace -->
-  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-xl border border-pink-500/30 bg-surface-900/95 px-4 py-3 text-sm font-medium text-pink-200 shadow-2xl backdrop-blur-md transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
-    <svg class="h-4 w-4 text-pink-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-    <span id="toast-message">Enlace copiado al portapapeles</span>
-  </div>
-
-  <!-- Barra de Navegación -->
-  <header class="sticky top-0 z-40 border-b border-purple-900/30 bg-surface-950/85 backdrop-blur-md">
-    <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
-      <!-- Marca / Iniciales -->
-      <a href="#inicio" class="group flex items-center gap-2.5 text-base font-bold tracking-tight text-white">
-        <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-pink-500/35 bg-pink-500/10 font-mono text-xs font-semibold text-pink-400 transition-colors group-hover:border-pink-400/60 group-hover:bg-pink-500/20">
-          &gt;_
-        </span>
-        <span>AR<span class="bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">.dev</span></span>
-      </a>
-
-      <!-- Navegación Desktop -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
-        <a href="#sobre-mi" class="transition-colors hover:text-pink-300">Sobre mí</a>
-        <a href="#enfoque-bases" class="transition-colors hover:text-pink-300">Enfoque y Bases</a>
-        <a href="#habilidades" class="transition-colors hover:text-pink-300">Habilidades</a>
-        <a href="#proyectos" class="transition-colors hover:text-pink-300">Proyectos</a>
-        <a href="#contacto" class="transition-colors hover:text-pink-300">Contacto</a>
-      </nav>
-
-      <!-- Acceso directo GitHub + Botón Móvil -->
-      <div class="flex items-center gap-3">
-        <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 rounded-lg border border-purple-800/50 bg-surface-900 px-3.5 py-2 text-xs font-medium text-slate-200 transition-all hover:border-pink-500/50 hover:text-pink-300">
-          <svg class="h-4 w-4 text-purple-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-          </svg>
-          <span>GitHub (@amijoaliandev)</span>
-        </a>
-
-        <button id="menu-btn" type="button" aria-label="Abrir menú de navegación" aria-expanded="false" class="inline-flex md:hidden items-center justify-center rounded-lg border border-purple-900/50 bg-surface-900 p-2.5 text-slate-300 hover:bg-surface-800 hover:text-white">
-          <svg id="menu-icon-open" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg id="menu-icon-close" class="hidden h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Menú Móvil Desplegable -->
-    <div id="mobile-menu" class="hidden border-t border-purple-900/30 bg-surface-900/95 px-4 py-4 md:hidden">
-      <nav class="flex flex-col gap-2 text-sm font-medium text-slate-300">
-        <a href="#sobre-mi" class="mobile-link rounded-lg px-3 py-2.5 hover:bg-surface-800 hover:text-pink-300">Sobre mí</a>
-        <a href="#enfoque-bases" class="mobile-link rounded-lg px-3 py-2.5 hover:bg-surface-800 hover:text-pink-300">Enfoque y Bases</a>
-        <a href="#habilidades" class="mobile-link rounded-lg px-3 py-2.5 hover:bg-surface-800 hover:text-pink-300">Habilidades</a>
-        <a href="#proyectos" class="mobile-link rounded-lg px-3 py-2.5 hover:bg-surface-800 hover:text-pink-300">Proyectos</a>
-        <a href="#contacto" class="mobile-link rounded-lg px-3 py-2.5 hover:bg-surface-800 hover:text-pink-300">Contacto</a>
-        <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="mt-2 flex items-center justify-center gap-2 rounded-lg border border-pink-500/35 bg-pink-500/10 px-3 py-2.5 text-pink-300">
-          <span>GitHub (@amijoaliandev)</span>
-        </a>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">amijoalian<span>.dev</span></a>
+      <nav class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- SECCIÓN HERO -->
-    <section id="inicio" class="relative hero-glow pt-16 pb-20 sm:pt-24 sm:pb-28">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6">
-        <div class="max-w-3xl">
-          <!-- Badge de Estado -->
-          <div class="mb-6 inline-flex items-center gap-2.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-3.5 py-1.5 text-xs font-medium text-pink-200">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-400"></span>
-            </span>
-            <span>Disponible para pasantías y proyectos · Estudiante de Informática (UDO)</span>
-          </div>
-
-          <!-- Título Principal con degradado rosado a morado -->
-          <h1 class="bg-gradient-to-r from-white via-pink-200 to-purple-300 bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl">
-            Amijoalian Roa
-          </h1>
-
-          <!-- Subtítulo -->
-          <p class="mt-5 text-lg leading-relaxed text-slate-300 sm:text-xl">
-            Diseño y construcción de software estructurado, funcional y orientado a resolver necesidades reales, con énfasis en <span class="font-semibold text-pink-300">páginas web, desarrollo frontend</span> y <span class="font-semibold text-purple-300">desarrollo móvil</span>.
-          </p>
-
-          <!-- Ubicación / Institución -->
-          <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-slate-400">
-            <span class="flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-pink-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              </svg>
-              Universidad de Oriente (UDO) · Núcleo Nueva Esparta
-            </span>
-            <span class="flex items-center gap-1.5">
-              <svg class="h-4 w-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-              Venezuela
-            </span>
-          </div>
-
-          <!-- Botones de Acción -->
-          <div class="mt-9 flex flex-wrap items-center gap-4">
-            <a href="#proyectos" class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pink-500/25 transition-all hover:brightness-110 active:scale-[0.99]">
-              <span>Ver proyectos</span>
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
-
-            <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2.5 rounded-xl border border-purple-800/60 bg-surface-900/90 px-6 py-3.5 text-sm font-semibold text-white transition-all hover:border-pink-400/50 hover:bg-surface-800 active:scale-[0.99]">
-              <svg class="h-4 w-4 text-pink-300" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-              </svg>
-              <span>GitHub (@amijoaliandev)</span>
-            </a>
-          </div>
+    <section class="hero">
+      <div class="container">
+        <div class="badge">
+          <span class="dot"></span>
+          Estudiante de Informática · UDO
         </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN SOBRE MÍ -->
-    <section id="sobre-mi" class="border-t border-purple-900/30 py-16 sm:py-24">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 reveal">
-        <div class="grid gap-10 md:grid-cols-12 md:items-start">
-          <div class="md:col-span-4">
-            <p class="font-mono text-xs font-semibold uppercase tracking-wider text-pink-400">01 // Perfil</p>
-            <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Sobre mí</h2>
-          </div>
-
-          <div class="md:col-span-8 space-y-4 text-base leading-relaxed text-slate-300">
-            <p>
-              Soy estudiante de Informática en la <strong class="font-semibold text-white">Universidad de Oriente (UDO), Núcleo Nueva Esparta</strong>, enfocada en el diseño y construcción de software estructurado, funcional y orientado a resolver necesidades reales.
-            </p>
-            <p>
-              Con experiencia trabajando en lenguajes de programación, desarrollo móvil y herramientas analíticas, disfruto transformar problemas complejos —desde la modelación de sistemas hasta procesos estadísticos y gestión comercial— en interfaces claras y código mantenible.
-            </p>
-
-            <!-- Destacados de objetivo y enfoque práctico -->
-            <div class="mt-6 grid grid-cols-1 gap-4 pt-2 sm:grid-cols-2">
-              <div class="rounded-xl border border-purple-800/40 bg-surface-900/90 p-4">
-                <p class="font-mono text-xs text-pink-400">Enfoque Práctico</p>
-                <p class="mt-1 text-sm font-semibold text-white">Software práctico y herramientas útiles para gestión analítica</p>
-                <p class="mt-1 text-xs text-slate-400">Priorizando soluciones funcionales, ordenadas y fáciles de mantener.</p>
-              </div>
-              <div class="rounded-xl border border-purple-800/40 bg-surface-900/90 p-4">
-                <p class="font-mono text-xs text-purple-400">Objetivo</p>
-                <p class="mt-1 text-sm font-semibold text-white">Crecimiento continuo</p>
-                <p class="mt-1 text-xs text-slate-400">Consolidar habilidades en desarrollo web frontend y construcción de software.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN ENFOQUE Y BASES -->
-    <section id="enfoque-bases" class="border-t border-purple-900/30 py-16 sm:py-24">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 reveal">
-        <div>
-          <p class="font-mono text-xs font-semibold uppercase tracking-wider text-pink-400">02 // Fundamentos</p>
-          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Enfoque y Bases</h2>
-          <p class="mt-2 max-w-2xl text-sm text-slate-400">
-            Áreas principales de desarrollo, bases técnicas de formación académica y principios de trabajo.
-          </p>
-        </div>
-
-        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <!-- Tarjeta 1: Área de enfoque -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-pink-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Área de enfoque</h3>
-            </div>
-            <ul class="mt-5 space-y-3 text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-pink-400 shrink-0"></span>
-                <span>Desarrollo Web (Páginas web / Frontend)</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-pink-400 shrink-0"></span>
-                <span>Desarrollo Móvil</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Tarjeta 2: Bases técnicas -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-purple-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Bases técnicas</h3>
-            </div>
-            <ul class="mt-5 space-y-3 text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                <span>Lógica y modelado</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                <span>Estructuras de datos</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                <span>Simulación</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-purple-400 shrink-0"></span>
-                <span>Arquitectura</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Tarjeta 3: Enfoque de trabajo -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-pink-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Enfoque de trabajo</h3>
-            </div>
-            <p class="mt-5 text-sm leading-relaxed text-slate-300">
-              Software práctico, interfaces claras, código mantenible y herramientas útiles para gestión analítica.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN HABILIDADES TÉCNICAS -->
-    <section id="habilidades" class="border-t border-purple-900/30 py-16 sm:py-24">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 reveal">
-        <div>
-          <p class="font-mono text-xs font-semibold uppercase tracking-wider text-pink-400">03 // Stack</p>
-          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Habilidades Técnicas</h2>
-          <p class="mt-2 text-sm text-slate-400">
-            Tecnologías, lenguajes y herramientas que utilizo en mis desarrollos web y proyectos académicos.
-          </p>
-        </div>
-
-        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <!-- Categoría 1: Frontend / Páginas Web -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-pink-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Frontend / Páginas Web</h3>
-            </div>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="rounded-lg border border-pink-500/30 bg-pink-500/10 px-3 py-1.5 font-mono text-xs text-pink-200">HTML</span>
-              <span class="rounded-lg border border-pink-500/30 bg-pink-500/10 px-3 py-1.5 font-mono text-xs text-pink-200">CSS</span>
-              <span class="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 font-mono text-xs text-purple-200">JavaScript</span>
-            </div>
-          </div>
-
-          <!-- Categoría 2: Lenguajes y Datos -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-purple-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Lenguajes y Datos</h3>
-            </div>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 font-mono text-xs text-purple-200">Python</span>
-              <span class="rounded-lg border border-pink-500/30 bg-pink-500/10 px-3 py-1.5 font-mono text-xs text-pink-200">C</span>
-              <span class="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 font-mono text-xs text-purple-200">SQL</span>
-            </div>
-          </div>
-
-          <!-- Categoría 3: Herramientas -->
-          <div class="rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div class="flex items-center gap-2.5 text-pink-400">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-              </svg>
-              <h3 class="text-base font-bold text-white">Herramientas</h3>
-            </div>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="rounded-lg border border-pink-500/30 bg-pink-500/10 px-3 py-1.5 font-mono text-xs text-pink-200">Tkinter</span>
-              <span class="rounded-lg border border-purple-500/30 bg-purple-500/10 px-3 py-1.5 font-mono text-xs text-purple-200">Git</span>
-              <span class="rounded-lg border border-pink-500/30 bg-pink-500/10 px-3 py-1.5 font-mono text-xs text-pink-200">GitHub</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN PROYECTOS DESTACADOS -->
-    <section id="proyectos" class="border-t border-purple-900/30 py-16 sm:py-24">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 reveal">
-        <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <p class="font-mono text-xs font-semibold uppercase tracking-wider text-pink-400">04 // Portafolio</p>
-            <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Proyectos Destacados</h2>
-            <p class="mt-2 max-w-2xl text-sm text-slate-400">
-              Repositorios publicados en mi perfil de GitHub que reflejan mi trabajo en desarrollo web, simulación estadística y métodos numéricos.
-            </p>
-          </div>
-          <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-xs font-medium text-purple-300 transition-colors hover:text-pink-300">
-            <span>Ver perfil completo en GitHub</span>
-            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+        <h1>
+          Hola, soy <span class="gradient">Amijoalian Roa</span>.
+          <br />
+          Construyo software claro y funcional.
+        </h1>
+        <p>
+          Estudiante de Informática en la Universidad de Oriente, enfocada en el diseño y
+          construcción de software estructurado, funcional y orientado a resolver necesidades
+          reales, con énfasis en páginas web, desarrollo frontend y desarrollo móvil.
+        </p>
+        <div class="actions">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+            GitHub (@amijoaliandev)
           </a>
         </div>
+      </div>
+    </section>
 
-        <!-- Grid de Proyectos (3 repositorios reales) -->
-        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-          
-          <!-- Proyecto 1: Plataforma Web de Telemedicina -->
-          <article class="project-card flex flex-col justify-between rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div>
-              <div class="flex items-center justify-between gap-3">
-                <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-pink-500/25 bg-pink-500/10 text-pink-400">
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
-                </span>
-                <span class="font-mono text-xs text-slate-400">Desarrollo Web</span>
-              </div>
-
-              <h3 class="mt-4 text-lg font-bold text-white">
-                Plataforma Web de Telemedicina (Proyecto Grupal)
-              </h3>
-
-              <p class="mt-3 text-sm leading-relaxed text-slate-300">
-                Desarrollo colaborativo de una página web orientada a servicios de telemedicina, enfocada en ofrecer una interfaz clara, estructurada y funcional para la gestión y presentación de información.
-              </p>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-purple-900/40">
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-md border border-pink-500/25 bg-pink-500/10 px-2.5 py-1 font-mono text-xs text-pink-200">HTML</span>
-                <span class="rounded-md border border-pink-500/25 bg-pink-500/10 px-2.5 py-1 font-mono text-xs text-pink-200">CSS</span>
-                <span class="rounded-md border border-purple-500/25 bg-purple-500/10 px-2.5 py-1 font-mono text-xs text-purple-200">JavaScript</span>
-                <span class="rounded-md border border-purple-500/25 bg-purple-500/10 px-2.5 py-1 font-mono text-xs text-purple-300">Proyecto Grupal</span>
-              </div>
-
-              <div class="mt-4">
-                <a href="https://github.com/amijoaliandev/proyecto" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-400 transition-colors hover:text-pink-300">
-                  <span>Ver repositorio en GitHub</span>
-                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Proyecto 2: Simulador de Números Aleatorios -->
-          <article class="project-card flex flex-col justify-between rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div>
-              <div class="flex items-center justify-between gap-3">
-                <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-purple-500/25 bg-purple-500/10 text-purple-400">
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                </span>
-                <span class="font-mono text-xs text-slate-400">Simulación</span>
-              </div>
-
-              <h3 class="mt-4 text-lg font-bold text-white">
-                Simulación y Números Aleatorios
-              </h3>
-
-              <p class="mt-3 text-sm leading-relaxed text-slate-300">
-                Aplicación de escritorio con interfaz gráfica desarrollada para la generación de números pseudoaleatorios y la ejecución de pruebas estadísticas de validación.
-              </p>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-purple-900/40">
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-md border border-purple-500/25 bg-purple-500/10 px-2.5 py-1 font-mono text-xs text-purple-200">Python</span>
-                <span class="rounded-md border border-pink-500/25 bg-pink-500/10 px-2.5 py-1 font-mono text-xs text-pink-200">Tkinter</span>
-                <span class="rounded-md border border-purple-500/25 bg-purple-500/10 px-2.5 py-1 font-mono text-xs text-purple-300">Simulación</span>
-              </div>
-
-              <div class="mt-4">
-                <a href="https://github.com/amijoaliandev/proyecto-simulacion1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-400 transition-colors hover:text-pink-300">
-                  <span>Ver repositorio en GitHub</span>
-                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Proyecto 3: Métodos de Cálculo Numérico -->
-          <article class="project-card flex flex-col justify-between rounded-2xl border border-purple-800/40 bg-surface-900/90 p-6">
-            <div>
-              <div class="flex items-center justify-between gap-3">
-                <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-pink-500/25 bg-pink-500/10 text-pink-400">
-                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </span>
-                <span class="font-mono text-xs text-slate-400">Algoritmos</span>
-              </div>
-
-              <h3 class="mt-4 text-lg font-bold text-white">
-                Métodos de Cálculo Numérico
-              </h3>
-
-              <p class="mt-3 text-sm leading-relaxed text-slate-300">
-                Implementación de algoritmos y métodos numéricos en Python para la resolución computacional de problemas matemáticos y análisis de aproximaciones.
-              </p>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-purple-900/40">
-              <div class="flex flex-wrap gap-2">
-                <span class="rounded-md border border-purple-500/25 bg-purple-500/10 px-2.5 py-1 font-mono text-xs text-purple-200">Python</span>
-                <span class="rounded-md border border-pink-500/25 bg-pink-500/10 px-2.5 py-1 font-mono text-xs text-pink-200">Algoritmos</span>
-              </div>
-
-              <div class="mt-4">
-                <a href="https://github.com/amijoaliandev/calculo-numerico" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-pink-400 transition-colors hover:text-pink-300">
-                  <span>Ver repositorio en GitHub</span>
-                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </article>
-
+    <section id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+        <p class="section-subtitle">
+          Enfoque práctico, bases técnicas sólidas y crecimiento continuo.
+        </p>
+        <div class="about-grid">
+          <div class="card">
+            <h3>De problemas a soluciones</h3>
+            <p>
+              Disfruto transformar problemas complejos —desde la modelación de sistemas hasta
+              procesos estadísticos y gestión comercial— en interfaces claras y código mantenible.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Bases y enfoque</h3>
+            <p>
+              Cuento con bases en lógica y modelado, estructuras de datos, simulación y
+              arquitectura, orientadas a un software práctico y herramientas útiles para la gestión
+              analítica, con enfoque principal en páginas web y desarrollo móvil.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Crecimiento continuo</h3>
+            <p>
+              Me interesa seguir perfeccionando la construcción de interfaces web y aplicaciones,
+              aprendiendo buenas prácticas y fortaleciendo cada proyecto paso a paso.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="border-t border-purple-900/30 py-16 sm:py-24">
-      <div class="mx-auto max-w-5xl px-4 sm:px-6 reveal">
-        <div class="rounded-3xl border border-purple-800/45 bg-gradient-to-br from-surface-900 via-surface-900 to-surface-800/90 p-8 sm:p-12 text-center">
-          <p class="font-mono text-xs font-semibold uppercase tracking-wider text-pink-400">05 // Conectar</p>
-          <h2 class="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            Repositorios y Actividad en GitHub
-          </h2>
-          <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
-            Puedes explorar el código fuente de estos proyectos y seguir mi progreso académico directamente en mi cuenta de GitHub.
-          </p>
-
-          <div class="mt-8 flex flex-col items-center justify-center gap-3.5 sm:flex-row">
-            <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pink-500/25 transition-all hover:brightness-110 active:scale-[0.99]">
-              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-              </svg>
-              <span>GitHub (@amijoaliandev)</span>
-            </a>
-
-            <button id="copy-github-btn" type="button" class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-purple-800/60 bg-surface-950/80 px-6 py-3.5 text-sm font-medium text-slate-200 transition-all hover:border-pink-400/50 hover:text-pink-300 active:scale-[0.99]">
-              <svg class="h-4 w-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <span>Copiar enlace de GitHub</span>
-            </button>
+    <section id="habilidades">
+      <div class="container">
+        <h2 class="section-title">Habilidades técnicas</h2>
+        <p class="section-subtitle">
+          Lenguajes y herramientas con los que he trabajado, con mayor práctica en el área frontend y páginas web.
+        </p>
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Web y Frontend</h3>
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
           </div>
+          <div class="card">
+            <h3>Lenguajes y Datos</h3>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">C</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Herramientas</h3>
+            <div class="tags">
+              <span class="tag">Tkinter</span>
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <p class="mt-5 font-mono text-xs text-slate-500">
-            https://github.com/amijoaliandev
-          </p>
+    <section id="proyectos">
+      <div class="container">
+        <h2 class="section-title">Proyectos en GitHub</h2>
+        <p class="section-subtitle">
+          Repositorios publicados actualmente en mi cuenta de GitHub.
+        </p>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-type">Proyecto grupal · Web</span>
+              </div>
+              <h3>Proyecto de Telemedicina</h3>
+              <p>
+                Página web desarrollada en equipo orientada a una plataforma de telemedicina,
+                cuidando la presentación y estructura de la interfaz.
+              </p>
+            </div>
+            <div>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/amijoaliandev/proyecto" target="_blank" rel="noopener noreferrer">
+                  Ver repositorio →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-type">Simulación</span>
+              </div>
+              <h3>Simulación y Números Aleatorios</h3>
+              <p>
+                Proyecto de simulación enfocado en la generación y análisis de números aleatorios
+                con interfaz gráfica de escritorio.
+              </p>
+            </div>
+            <div>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Tkinter</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/amijoaliandev/proyecto-simulacion1" target="_blank" rel="noopener noreferrer">
+                  Ver repositorio →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <div class="project-top">
+                <span class="project-type">Métodos Numéricos</span>
+              </div>
+              <h3>Cálculo Numérico</h3>
+              <p>
+                Implementación de métodos numéricos para la resolución computacional de problemas
+                matemáticos.
+              </p>
+            </div>
+            <div>
+              <div class="tags">
+                <span class="tag">Python</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/amijoaliandev/calculo-numerico" target="_blank" rel="noopener noreferrer">
+                  Ver repositorio →
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <h2 class="section-title">GitHub y contacto</h2>
+            <p>
+              Puedes revisar mi perfil y repositorios directamente en GitHub.
+            </p>
+          </div>
+          <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Ir a github.com/amijoaliandev
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER MINIMALISTA -->
-  <footer class="border-t border-purple-900/30 py-8">
-    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 text-center text-xs text-slate-400 sm:flex-row sm:px-6 sm:text-left">
-      <p>
-        Amijoalian Roa · Universidad de Oriente (UDO) — Núcleo Nueva Esparta
-      </p>
-      <p class="font-mono">
-        <a href="https://github.com/amijoaliandev" target="_blank" rel="noopener noreferrer" class="text-pink-400 hover:underline">https://github.com/amijoaliandev</a>
-      </p>
+  <footer>
+    <div class="container">
+      Amijoalian Roa · Portafolio en GitHub
     </div>
   </footer>
-
-  <!-- Scripts de Interactividad -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Menú móvil desplegable
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const iconOpen = document.getElementById('menu-icon-open');
-      const iconClose = document.getElementById('menu-icon-close');
-      const mobileLinks = document.querySelectorAll('.mobile-link');
-
-      function toggleMobileMenu() {
-        const isHidden = mobileMenu.classList.contains('hidden');
-        mobileMenu.classList.toggle('hidden');
-        iconOpen.classList.toggle('hidden', isHidden);
-        iconClose.classList.toggle('hidden', !isHidden);
-        menuBtn.setAttribute('aria-expanded', String(isHidden));
-      }
-
-      if (menuBtn) {
-        menuBtn.addEventListener('click', toggleMobileMenu);
-      }
-
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (!mobileMenu.classList.contains('hidden')) {
-            toggleMobileMenu();
-          }
-        });
-      });
-
-      // 2. Copiar enlace de GitHub al portapapeles (con fallback seguro para iframe)
-      const copyBtn = document.getElementById('copy-github-btn');
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-message');
-      let toastTimeout;
-
-      function showToast(message) {
-        toastMsg.textContent = message;
-        toast.classList.remove('translate-y-20', 'opacity-0');
-        toast.classList.add('translate-y-0', 'opacity-100');
-
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
-          toast.classList.remove('translate-y-0', 'opacity-100');
-          toast.classList.add('translate-y-20', 'opacity-0');
-        }, 3000);
-      }
-
-      if (copyBtn) {
-        copyBtn.addEventListener('click', () => {
-          const githubUrl = 'https://github.com/amijoaliandev';
-          const tempInput = document.createElement('textarea');
-          tempInput.value = githubUrl;
-          tempInput.style.position = 'fixed';
-          tempInput.style.opacity = '0';
-          document.body.appendChild(tempInput);
-          tempInput.select();
-
-          try {
-            const success = document.execCommand('copy');
-            if (success) {
-              showToast('Enlace de GitHub copiado al portapapeles');
-            } else {
-              showToast('No se pudo copiar automáticamente');
-            }
-          } catch (err) {
-            showToast('Enlace: github.com/amijoaliandev');
-          } finally {
-            document.body.removeChild(tempInput);
-          }
-        });
-      }
-
-      // 3. Animación suave de aparición al hacer scroll
-      const revealElements = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
-
-        revealElements.forEach(el => observer.observe(el));
-      } else {
-        revealElements.forEach(el => el.classList.add('visible'));
-      }
-    });
-  </script>
 </body>
 </html>
